@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SamApp — Feed Smarter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    .container {
+      padding: 1.5rem;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .hero {
+      text-align: center;
+      padding-top: 2rem;
+      animation: fadeInUp 0.8s ease;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: #666;
+    }
+
+    .qr-code {
+      margin: 2rem auto;
+      width: 180px;
+      height: 180px;
+      background: #ddd;
+      border-radius: 8px;
+      animation: fadeIn 1s ease;
+    }
+
+    .section {
+      margin-top: 2rem;
+      animation: fadeInUp 1s ease;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .step {
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    .step h3 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .step p {
+      margin: 0.5rem 0 0;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.8rem;
+      color: #888;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @media (min-width: 600px) {
+      .steps {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .step {
+        flex: 1 1 45%;
+      }
+    }
+
+    .carousel {
+      position: relative;
+      max-width: 360px;
+      margin: 2rem auto;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      user-select: none;
+      cursor: grab;
+    }
+
+    .carousel:active {
+      cursor: grabbing;
+    }
+
+    .slides {
+      display: flex;
+      width: 400%;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+      width: 100%;
+      flex-shrink: 0;
+      padding: 1rem;
+      box-sizing: border-box;
+    }
+
+    .slide img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+    }
+
+
+    .slide p {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    /* Hide radio buttons */
+    input[name="slides"] {
+       display: none;
+    }
+
+    /* Slide logic */
+    #slide1:checked ~ .slides { transform: translateX(0%); }
+    #slide2:checked ~ .slides { transform: translateX(-100%); }
+    #slide3:checked ~ .slides { transform: translateX(-200%); }
+    #slide4:checked ~ .slides { transform: translateX(-300%); }
+    #slide5:checked ~ .slides { transform: translateX(-400%); }
+    #slide6:checked ~ .slides { transform: translateX(-500%); }
+    #slide7:checked ~ .slides { transform: translateX(-600%); }
+    #slide8:checked ~ .slides { transform: translateX(-700%); }
+    #slide9:checked ~ .slides { transform: translateX(-800%); }
+    #slide10:checked ~ .slides { transform: translateX(-900%); }
+    #slide11:checked ~ .slides { transform: translateX(-1000%); }
+    #slide12:checked ~ .slides { transform: translateX(-1100%); }
+    #slide13:checked ~ .slides { transform: translateX(-1200%); }
+
+    /* Navigation dots */
+    .navigation {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .navigation label {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      background: #ccc;
+      border-radius: 50%;
+      margin: 0 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    input#slide1:checked ~ .navigation label[for="slide1"],
+    input#slide2:checked ~ .navigation label[for="slide2"],
+    input#slide3:checked ~ .navigation label[for="slide3"],
+    input#slide4:checked ~ .navigation label[for="slide4"],
+    input#slide5:checked ~ .navigation label[for="slide5"],
+    input#slide6:checked ~ .navigation label[for="slide6"],
+    input#slide7:checked ~ .navigation label[for="slide7"],
+    input#slide8:checked ~ .navigation label[for="slide8"],
+    input#slide9:checked ~ .navigation label[for="slide9"],
+    input#slide10:checked ~ .navigation label[for="slide10"],
+    input#slide11:checked ~ .navigation label[for="slide11"],
+    input#slide12:checked ~ .navigation label[for="slide12"],
+    input#slide13:checked ~ .navigation label[for="slide13"] {
+        background: #1a73e8;
+    }    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <h1>Welcome to SamApp</h1>
+      <p>Track pets, feeds & foods across devices with ease.</p>
+      <div class="qr-code">
+        <!-- QR code image goes here -->
+      </div>
+    </div>
+    <div class="carousel">
+        <input type="radio" name="slides" id="slide1" checked>
+        <input type="radio" name="slides" id="slide2">
+        <input type="radio" name="slides" id="slide3">
+        <input type="radio" name="slides" id="slide4">
+        <input type="radio" name="slides" id="slide5">
+        <input type="radio" name="slides" id="slide6">
+        <input type="radio" name="slides" id="slide7">
+        <input type="radio" name="slides" id="slide8">
+        <input type="radio" name="slides" id="slide9">
+        <input type="radio" name="slides" id="slide10">
+        <input type="radio" name="slides" id="slide11">
+        <input type="radio" name="slides" id="slide12">
+        <input type="radio" name="slides" id="slide13">
+      
+        <div class="slides">
+          <div class="slide" id="s1">
+            <img src="images/00-1st-screen.jpg" alt="First screen">
+            <p>The 1st screen</p>
+          </div>
+          <div class="slide" id="s2">
+            <img src="images/01-register.jpg" alt="Register screen">
+            <p>Register - create your client, </p>
+            <p>define owner's and members's nicknames</p>
+          </div>
+          <div class="slide" id="s3">
+            <img src="images/02-register-filled.jpg" alt="Register screen filled by the owner">
+            <p>Register - create your client, </p>
+            <p>define owner's and members's nicknames</p>
+          </div>
+          <div class="slide" id="s4">
+            <img src="images/03-first-login.jpg" alt="Login screen">
+            <p>Log In with unique client code and your nickname</p>
+            <p>The unique code is filled automatically</p>
+          </div>
+          <div class="slide" id="s5">
+            <img src="images/04-first-login-filled.jpg" alt="Fill login details">
+            <p>Log In with unique client code and your nickname</p>
+            <p>The unique code is filled automatically</p>
+            <p>Fill your nikname</p>
+          </div>
+          <div class="slide" id="s6">
+            <img src="images/05-setup-pets.jpg" alt="Add pets">
+            <p>Add pets you manage</p>
+          </div>
+          <div class="slide" id="s7">
+            <img src="images/06-setup-pets-filled.jpg" alt="Fill pets details">
+            <p>Add pets you manage</p>
+            <p>Fill pets details</p>
+          </div>
+          <div class="slide" id="s8">
+            <img src="images/07-setup-meals.jpg" alt="Setup Meals">
+            <p>Define meals for each pet</p>
+          </div>
+          <div class="slide" id="s9">
+            <img src="images/08-setup-meals-fill.jpg" alt="Fill Meals details">
+            <p>Define meals for each pet</p>
+            <p>Fill meals details</p>
+          </div>
+          <div class="slide" id="s10">
+            <img src="images/09-setup-meals-filled.jpg" alt="Fihish Setup">
+            <p>Define meals for each pet</p>
+            <p>Fill meals details</p>
+            <p>Finish Setup</p>
+          </div>
+          <div class="slide" id="s11">
+            <img src="images/10-main-after-setup.jpg" alt="Main screen after setup">
+            <p>Main screen after setup</p>
+            <p>Meals and feeding log</p>
+          </div>
+          <div class="slide" id="s12">
+            <img src="images/11-main-select-portion.jpg" alt="Selec portion to feed">
+            <p>Selec portion to feed</p>
+          </div>
+          <div class="slide" id="s13">
+            <img src="images/12-main-log-selected-portion.jpg" alt="Logging Selected portion">
+            <p>Selec portion to feed</p>
+            <p>Logging Selected portion</p>
+          </div>
+        </div>
+      
+        <div class="navigation">
+          <label for="slide1"></label>
+          <label for="slide2"></label>
+          <label for="slide3"></label>
+          <label for="slide4"></label>
+          <label for="slide5"></label>
+          <label for="slide6"></label>
+          <label for="slide7"></label>
+          <label for="slide8"></label>
+          <label for="slide9"></label>
+          <label for="slide10"></label>
+          <label for="slide11"></label>
+          <label for="slide12"></label>
+          <label for="slide13"></label>
+        </div>
+      </div>
+    <footer>
+      SamApp MVP v1.0 • Internal testing release<br/>
+      Built with ♥ by Evgeny & team
+    </footer>
+  </div>
+  <script>
+    const carousel = document.querySelector('.carousel');
+    let startX = 0;
+    let currentIndex = 0;
+    const totalSlides = 4; // match number of slides
+  
+    carousel.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    });
+  
+    carousel.addEventListener('touchend', (e) => {
+      const endX = e.changedTouches[0].clientX;
+      const deltaX = endX - startX;
+  
+      if (Math.abs(deltaX) < 50) return; // ignore small swipes
+  
+      if (deltaX < 0 && currentIndex < totalSlides - 1) {
+        currentIndex++;
+      } else if (deltaX > 0 && currentIndex > 0) {
+        currentIndex--;
+      }
+  
+      document.getElementById(`slide${currentIndex + 1}`).checked = true;
+    });
+    let mouseDownX = null;
+
+    carousel.addEventListener('mousedown', (e) => {
+      mouseDownX = e.clientX;
+    });
+
+    carousel.addEventListener('mouseup', (e) => {
+      if (mouseDownX === null) return;
+
+      const mouseUpX = e.clientX;
+      const deltaX = mouseUpX - mouseDownX;
+
+      if (Math.abs(deltaX) < 50) return; // ignore tiny drags
+
+      if (deltaX < 0 && currentIndex < totalSlides - 1) {
+        currentIndex++;
+      } else if (deltaX > 0 && currentIndex > 0) {
+        currentIndex--;
+      }
+
+      document.getElementById(`slide${currentIndex + 1}`).checked = true;
+      mouseDownX = null;
+    });    
+  </script> 
+</body>
+</html>
