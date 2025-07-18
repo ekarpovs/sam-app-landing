@@ -45,6 +45,70 @@
       animation: fadeIn 1s ease;
     }
 
+    .intro-section {
+      padding: 1rem;
+      max-width: 800px;
+      margin: auto;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    .intro-toggle {
+      display: block;
+      width: 100%;
+      background-color: #0077cc;
+      color: white;
+      font-size: 1rem;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .intro-toggle:hover {
+      background-color: #005fa3;
+    }
+
+    .intro-content {
+      margin-top: 1rem;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .intro-content {
+        display: none;
+      }
+
+      .intro-section.expanded .intro-content {
+        display: block;
+      }
+    }
+
+    .terms-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .terms-table th,
+    .terms-table td {
+      border: 1px solid #ddd;
+      padding: 0.6rem;
+      text-align: left;
+    }
+
+    .terms-table th {
+      background-color: #f0f8ff;
+      color: #333;
+    }
+
+    .terms-table td {
+      background-color: #fafafa;
+    }
+
+
     .section {
       margin-top: 2rem;
       animation: fadeInUp 1s ease;
@@ -209,6 +273,51 @@
         <!-- QR code image goes here -->
       </div>
     </div>
+    <div class="intro-section">
+      <button class="intro-toggle" id="intro-toggle"> What is SamApp?</button>
+      <div class="intro-content" id="intro-content">
+        <p>
+          SamApp is a lightweight, cross-device app for managing pet feeding routines.
+          It helps households track meals, portions, and feeding history — whether you're the owner or a family member.
+        </p>
+
+        <h3>Key Terms</h3>
+        <table class="terms-table">
+          <thead>
+            <tr>
+              <th>Term</th>
+              <th>Meaning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Client</strong></td>
+              <td>A household or group managing pets together</td>
+            </tr>
+            <tr>
+              <td><strong>Owner</strong></td>
+              <td>The person who registers the client and manages setup</td>
+            </tr>
+            <tr>
+              <td><strong>Member</strong></td>
+              <td>Anyone in the household who logs in to feed pets</td>
+            </tr>
+            <tr>
+              <td><strong>Pet</strong></td>
+              <td>An animal being tracked in SamApp</td>
+            </tr>
+            <tr>
+              <td><strong>Meal</strong></td>
+              <td>A scheduled feeding event for a pet</td>
+            </tr>
+            <tr>
+              <td><strong>Portion</strong></td>
+              <td>The amount of food given during a meal</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
     <div class="carousel">
         <input type="radio" name="slides" id="slide1" checked>
         <input type="radio" name="slides" id="slide2">
@@ -359,5 +468,13 @@
       mouseDownX = null;
     });    
   </script> 
+  <script>
+    const toggleBtn = document.getElementById('intro-toggle');
+    const introSection = document.querySelector('.intro-section');
+
+    toggleBtn.addEventListener('click', () => {
+      introSection.classList.toggle('expanded');
+    });
+  </script>
 </body>
 </html>
