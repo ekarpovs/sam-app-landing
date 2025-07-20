@@ -474,6 +474,9 @@
 
     toggleBtn.addEventListener('click', () => {
       introSection.classList.toggle('expanded');
+      toggleBtn.textContent = introSection.classList.contains('expanded') 
+        ? 'Hide SamApp Intro' 
+        : 'What is SamApp?';
     });
   </script>
 </body>
