@@ -176,7 +176,7 @@ footer {
 
 @media (max-width: 480px) {
   .slides-container {
-    max-height: 65vh;
+    max-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -219,7 +219,7 @@ footer {
   }
 }
 
-@media (min-width: 481px) and (max-width: 1024px) {
+/* @media (min-width: 481px) and (max-width: 1024px) {
   .container {
     max-width: 720px;
     padding: 1.5rem;
@@ -265,4 +265,4 @@ footer {
     padding: 0.6rem;
   }
 }
-
+ */
