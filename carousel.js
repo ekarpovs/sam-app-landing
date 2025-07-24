@@ -8,7 +8,16 @@ const dots = document.getElementById('navigation-dots');
 let currentIndex = 0;
 let visibleSlides = [];
 
-const slideRoles = ['both', 'owner', 'owner', 'owner', 'both'];
+const slideRoles = ['both', // welcome
+  'owner', 'owner', 'owner', // register
+  'both', 'both', // login
+  'owner', 'owner', 'owner', 'owner', // setup
+  'both', 'both', 'both', // main
+  'owner', 'owner', // settings
+  'owner', 'owner', // settings
+  'owner', 'owner', // settings
+  'owner', 'owner' // settings
+];
 
 function updateVisibleSlides(role) {
   visibleSlides = allSlides.filter((_, i) =>
