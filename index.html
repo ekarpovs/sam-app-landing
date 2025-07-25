@@ -15,8 +15,8 @@
       <div class="qr-code"></div>
     </div>
 
-    <div class="intro-section">
-      <button class="intro-toggle" id="intro-toggle">What is SamApp?</button>
+    <div class="toggle-section" id="intro-section">
+      <button class="toggle-button" id="intro-toggle">What is SamApp?</button>
       <div class="intro-content" id="intro-content">
         <p>SamApp is a lightweight, cross-device app for managing pet feeding routines.</p>
         <h3>Key Terms</h3>
@@ -32,22 +32,42 @@
       </div>
     </div>
 
-    <div class="carousel">
+    <div class="toggle-section" id="howto-section">
+    <button class="toggle-button" id="howto-toggle">How To Start?</button>
+    <div id="howto-content" class="howto-content">
       <div class="carousel-controls">
         <button id="prev-slide" class="arrow-btn hidden">&#x2B05;</button>
-        <select id="role-toggle">
+        <!-- <select id="role-toggle">
           <option value="owner">Owner</option>
           <option value="member">Member</option>
-        </select>
+        </select> -->
+        <div class="role-toggle" id="role-toggle">
+          <button class="role-btn active" data-role="owner">&#x1F4BC;<span> Owner</span></button>
+          <button class="role-btn" data-role="member">&#x1F466;<span>Member</span></button>
+        </div>
         <button id="next-slide" class="arrow-btn">&#x27A1;</button>
       </div>
 
       <div class="slides-container">
         <div class="slides" id="slides">
-          <div class="slide"><img src="images/00-welcome-panel.jpg"><p>Welcome</p></div>
-          <div class="slide"><img src="images/01-login-panel-with-reg-button.jpg"><p>Login</p></div>
-          <div class="slide"><img src="images/02-register-panel.jpg"><p>Register</p></div>
-          <div class="slide"><img src="images/03-register-panel-filled.jpg"><p>Setup</p></div>
+          <div class="slide"><img src="images/00-welcome-panel.jpg"><p>Greeting</p></div>
+          <div class="slide">
+            <img src="images/01-login-panel-with-reg-button.jpg">
+            <p>Login screen with the register button</p>
+            <p>&#x1F4BC; - Click the register button to create your client</p>
+            <p>&#x1F466; - Click the login button to log in</p>
+          </div>
+          <div class="slide">
+            <img src="images/02-register-panel.jpg">
+            <p>Register - create your client, </p>
+            <p>Fill your(owner's) details</p>
+            <p>Define your(owner's) and members's nicknames</p>
+            <p>The owner's name is the default nickname</p>
+          </div>
+          <div class="slide">
+            <img src="images/03-register-panel-filled.jpg">
+            <p>Register details example</p>
+          </div>
           <div class="slide"><img src="images/04-login-panel-after-register.jpg"><p>Log In</p></div>
           <div class="slide"><img src="images/05-login-panel-after-register-filled.jpg"><p>Log In filled</p></div>
           <div class="slide"><img src="images/06-setup-add-pets-panel.jpg"><p>Add Pets</p></div>
@@ -70,7 +90,7 @@
 
       <div class="navigation-dots" id="navigation-dots"></div>
     </div>
-
+    </div>
     <footer>
       SamApp MVP v1.0 • Internal testing release<br/>
       Built with ♥ by Evgeny & team
@@ -79,6 +99,12 @@
 
   <script src="carousel.js"></script>
   <script src="intro.js"></script>
-    
+  <script src="howto.js"></script>
+<!-- <script>
+function toggleSection(id) {
+  const section = document.getElementById(id);
+  section.style.display = section.style.display === 'none' ? 'block' : 'none';
+}
+</script>     -->
 </body>
 </html>

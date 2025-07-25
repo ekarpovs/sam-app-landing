@@ -1,0 +1,1 @@
+[HTML-Emoji](https://www.dremendo.com/html-tutorial/html-emoji-codes)

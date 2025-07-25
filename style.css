@@ -45,7 +45,7 @@ footer {
 }
 
 /* Intro Section */
-.intro-section {
+.toggle-section {
   background: #fff;
   margin: 1rem auto;
   border-radius: 12px;
@@ -53,7 +53,7 @@ footer {
   padding: 1rem;
 }
 
-.intro-toggle {
+.toggle-button {
   width: 100%;
   background-color: #0077cc;
   color: white;
@@ -65,7 +65,7 @@ footer {
   text-align: left;
 }
 
-.intro-toggle:hover {
+.toggle-button:hover {
   background-color: #005fa3;
 }
 
@@ -73,9 +73,14 @@ footer {
   display: none;
 }
 
-.intro-section.expanded .intro-content {
+.toggle-section.expanded .intro-content {
   display: block;
 }
+
+.toggle-section.expanded .howto-content {
+  display: block;
+}
+
 
 .terms-table {
   width: 100%;
@@ -99,12 +104,16 @@ footer {
 }
 
 /* Carousel Layout */
-.carousel {
+.howto-content {
   max-width: 420px;
   margin: 2rem auto;
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 0 6px rgba(0,0,0,0.1);
+}
+
+.howto-content {
+  display: none;
 }
 
 .carousel-controls {
@@ -125,9 +134,30 @@ footer {
   visibility: hidden;
 }
 
-#role-toggle {
+/* #role-toggle {
   font-size: 1rem;
   padding: 0.3rem 0.5rem;
+} */
+
+.role-toggle {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.role-btn {
+  padding: 0.4rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #0077cc;
+  background: #fff;
+  color: #0077cc;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.role-btn.active {
+  background: #0077cc;
+  color: white;
 }
 
 .slides-container {

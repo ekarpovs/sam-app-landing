@@ -1,9 +1,9 @@
-const toggleBtn = document.getElementById('intro-toggle');
-const introSection = document.querySelector('.intro-section');
+const introBtn = document.getElementById('intro-toggle');
+const introSection = document.getElementById('intro-section');
 
-toggleBtn.addEventListener('click', () => {
+introBtn.addEventListener('click', () => {
   introSection.classList.toggle('expanded');
-  toggleBtn.textContent = introSection.classList.contains('expanded') 
+  introBtn.textContent = introSection.classList.contains('expanded') 
     ? 'Hide SamApp Intro' 
     : 'What is SamApp?';
 });

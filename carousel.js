@@ -1,6 +1,6 @@
 const allSlides = Array.from(document.querySelectorAll('.slide'));
 const slidesContainer = document.getElementById('slides');
-const roleToggle = document.getElementById('role-toggle');
+const roleButtons = document.querySelectorAll('.role-btn');
 const prevBtn = document.getElementById('prev-slide');
 const nextBtn = document.getElementById('next-slide');
 const dots = document.getElementById('navigation-dots');
@@ -9,8 +9,9 @@ let currentIndex = 0;
 let visibleSlides = [];
 
 const slideRoles = ['both', // welcome
-  'owner', 'owner', 'owner', // register
-  'both', 'both', // login
+  'both', // login
+  'owner', 'owner', // register
+  'owner', 'owner', // login
   'owner', 'owner', 'owner', 'owner', // setup
   'both', 'both', 'both', // main
   'owner', 'owner', // settings
@@ -56,8 +57,15 @@ nextBtn.addEventListener('click', () => {
   updateCarousel(currentIndex);
 });
 
-roleToggle.addEventListener('change', e => {
-  updateVisibleSlides(e.target.value);
+roleButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    // Activate clicked role
+    roleButtons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+
+    const selectedRole = button.getAttribute('data-role');
+    updateVisibleSlides(selectedRole);
+  });
 });
 
 slidesContainer.addEventListener('touchstart', e => startX = e.touches[0].clientX);
@@ -83,4 +91,4 @@ slidesContainer.addEventListener('mouseup', e => {
 });
 
 // Initial render
-updateVisibleSlides(roleToggle.value);
+updateVisibleSlides('owner'); // Default to 'owner' role
