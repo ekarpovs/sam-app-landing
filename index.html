@@ -16,8 +16,8 @@
     </div>
 
     <div class="toggle-section" id="intro-section">
-      <button class="toggle-button" id="intro-toggle">What is SamApp?</button>
-      <div class="intro-content" id="intro-content">
+      <button class="toggle-button" id="intro-toggle" data-open="What is SamApp?" data-close="Hide Introduction">What is SamApp?</button>
+      <div class="toggle-content" id="intro-content">
         <p>SamApp is a lightweight, cross-device app for managing pet feeding routines.</p>
         <h3>Key Terms</h3>
         <table class="terms-table">
@@ -33,64 +33,79 @@
     </div>
 
     <div class="toggle-section" id="howto-section">
-    <button class="toggle-button" id="howto-toggle">How To Start?</button>
-    <div id="howto-content" class="howto-content">
-      <div class="carousel-controls">
-        <button id="prev-slide" class="arrow-btn hidden">&#x2B05;</button>
-        <!-- <select id="role-toggle">
-          <option value="owner">Owner</option>
-          <option value="member">Member</option>
-        </select> -->
-        <div class="role-toggle" id="role-toggle">
-          <button class="role-btn active" data-role="owner">&#x1F4BC;<span> Owner</span></button>
-          <button class="role-btn" data-role="member">&#x1F466;<span>Member</span></button>
+      <button class="toggle-button" id="howto-toggle" data-open="How to Use It?" data-close="Hide Guide">How to Use It?</button>
+      <div class="toggle-content" id="howto-content">
+        <div class="carousel-controls">
+          <button id="prev-slide" class="arrow-btn hidden">&#x2B05;</button>
+          <!-- <select id="role-toggle">
+            <option value="owner">Owner</option>
+            <option value="member">Member</option>
+          </select> -->
+          <div class="role-toggle" id="role-toggle">
+            <button class="role-btn active" data-role="owner">&#x1F4BC;<span> Owner</span></button>
+            <button class="role-btn" data-role="member">&#x1F466;<span>Member</span></button>
+          </div>
+          <button id="next-slide" class="arrow-btn">&#x27A1;</button>
         </div>
-        <button id="next-slide" class="arrow-btn">&#x27A1;</button>
-      </div>
 
-      <div class="slides-container">
-        <div class="slides" id="slides">
-          <div class="slide"><img src="images/00-welcome-panel.jpg"><p>Greeting</p></div>
-          <div class="slide">
-            <img src="images/01-login-panel-with-reg-button.jpg">
-            <p>Login screen with the register button</p>
-            <p>&#x1F4BC; - Click the register button to create your client</p>
-            <p>&#x1F466; - Click the login button to log in</p>
+        <div class="slides-container">
+          <div class="slides" id="slides">
+            <div class="slide"><img src="images/00-welcome-panel.jpg"><p>Greeting</p></div>
+            <div class="slide">
+              <img src="images/01-login-panel-with-reg-button.jpg">
+              <p>Login screen with the register button</p>
+              <p>&#x1F4BC; - Click the register button to create your client</p>
+              <p>&#x1F466; - Click the login button to log in</p>
+            </div>
+            <div class="slide">
+              <img src="images/02-register-panel.jpg">
+              <p>Register - create your client, </p>
+              <p>Fill your(owner's) details</p>
+              <p>Define your(owner's) and members's nicknames</p>
+              <p>The owner's name is the default nickname</p>
+            </div>
+            <div class="slide">
+              <img src="images/03-register-panel-filled.jpg">
+              <p>Register details example</p>
+            </div>
+            <div class="slide"><img src="images/04-login-panel-after-register.jpg"><p>Log In</p></div>
+            <div class="slide"><img src="images/05-login-panel-after-register-filled.jpg"><p>Log In filled</p></div>
+            <div class="slide"><img src="images/06-setup-add-pets-panel.jpg"><p>Add Pets</p></div>
+            <div class="slide"><img src="images/07-setup-add-pets-panel-filled.jpg"><p>Add Pets</p></div>
+            <div class="slide"><img src="images/08-setup-add-meals-panel.jpg"><p>Add Meals</p></div>
+            <div class="slide"><img src="images/09-setup-add-meals-panel-filled.jpg"><p>Add Meals</p></div>
+            <div class="slide"><img src="images/10-main-after-setup.jpg"><p>Main after setup</p></div>
+            <div class="slide"><img src="images/11-main-select-portion.jpg"><p>Select portion</p></div>
+            <div class="slide"><img src="images/12-main-log-selected-portion.jpg"><p>Log</p></div>
+            <div class="slide"><img src="images/13-settings-panel.jpg"><p>Settings</p></div>
+            <div class="slide"><img src="images/14-settings-edit-meals-panel.jpg"><p>Edit Meals</p></div>
+            <div class="slide"><img src="images/15-settings-add-meals-panel.jpg"><p>Add Meals</p></div>
+            <div class="slide"><img src="images/16-settings-edit-pets-panel.jpg"><p>Edit Pets</p></div>
+            <div class="slide"><img src="images/17-settings-add-pets-panel.jpg"><p>Add Pets</p></div>
+            <div class="slide"><img src="images/18-settings-edit-members-panel.jpg"><p>Edit Memberss</p></div>
+            <div class="slide"><img src="images/19-settings-add-members-panel.jpg"><p>Add Members</p></div>
+            <div class="slide"><img src="images/20-settings-reset-app-popup.jpg"><p>Reset App</p></div>
           </div>
-          <div class="slide">
-            <img src="images/02-register-panel.jpg">
-            <p>Register - create your client, </p>
-            <p>Fill your(owner's) details</p>
-            <p>Define your(owner's) and members's nicknames</p>
-            <p>The owner's name is the default nickname</p>
-          </div>
-          <div class="slide">
-            <img src="images/03-register-panel-filled.jpg">
-            <p>Register details example</p>
-          </div>
-          <div class="slide"><img src="images/04-login-panel-after-register.jpg"><p>Log In</p></div>
-          <div class="slide"><img src="images/05-login-panel-after-register-filled.jpg"><p>Log In filled</p></div>
-          <div class="slide"><img src="images/06-setup-add-pets-panel.jpg"><p>Add Pets</p></div>
-          <div class="slide"><img src="images/07-setup-add-pets-panel-filled.jpg"><p>Add Pets</p></div>
-          <div class="slide"><img src="images/08-setup-add-meals-panel.jpg"><p>Add Meals</p></div>
-          <div class="slide"><img src="images/09-setup-add-meals-panel-filled.jpg"><p>Add Meals</p></div>
-          <div class="slide"><img src="images/10-main-after-setup.jpg"><p>Main after setup</p></div>
-          <div class="slide"><img src="images/11-main-select-portion.jpg"><p>Select portion</p></div>
-          <div class="slide"><img src="images/12-main-log-selected-portion.jpg"><p>Log</p></div>
-          <div class="slide"><img src="images/13-settings-panel.jpg"><p>Settings</p></div>
-          <div class="slide"><img src="images/14-settings-edit-meals-panel.jpg"><p>Edit Meals</p></div>
-          <div class="slide"><img src="images/15-settings-add-meals-panel.jpg"><p>Add Meals</p></div>
-          <div class="slide"><img src="images/16-settings-edit-pets-panel.jpg"><p>Edit Pets</p></div>
-          <div class="slide"><img src="images/17-settings-add-pets-panel.jpg"><p>Add Pets</p></div>
-          <div class="slide"><img src="images/18-settings-edit-members-panel.jpg"><p>Edit Memberss</p></div>
-          <div class="slide"><img src="images/19-settings-add-members-panel.jpg"><p>Add Members</p></div>
-          <div class="slide"><img src="images/20-settings-reset-app-popup.jpg"><p>Reset App</p></div>
+        </div>
+
+        <div class="navigation-dots" id="navigation-dots"></div>
+      </div>
+    </div>
+    
+    <div class="toggle-section" id="faq-section">
+      <button class="toggle-button" id="faq-toggle" data-open="Common Questions" data-close="Hide FAQ">Common Questions</button>
+      <div class="toggle-content" id="faq-content">
+        <div>
+          <strong>Q: What is this app for?</strong>
+          <p>A: It's designed to make your life easier with helpful features!</p>
+        </div>
+        <div>
+          <strong>Q: How do I use the carousel?</strong>
+          <p>A: Scroll or swipe through the items to explore.</p>
         </div>
       </div>
+    </div>
 
-      <div class="navigation-dots" id="navigation-dots"></div>
-    </div>
-    </div>
     <footer>
       SamApp MVP v1.0 • Internal testing release<br/>
       Built with ♥ by Evgeny & team
@@ -98,13 +113,22 @@
   </div>
 
   <script src="carousel.js"></script>
-  <script src="intro.js"></script>
+  <script>
+    document.querySelectorAll('.toggle-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const section = button.closest('.toggle-section');
+        const content = section.querySelector('.toggle-content');
+        const openText = button.getAttribute('data-open');
+        const closeText = button.getAttribute('data-close');
+
+        content.classList.toggle('expanded');
+        button.textContent = content.classList.contains('expanded') ? closeText : openText;
+      });
+    });
+  </script>
+
+  <!-- <script src="intro.js"></script>
   <script src="howto.js"></script>
-<!-- <script>
-function toggleSection(id) {
-  const section = document.getElementById(id);
-  section.style.display = section.style.display === 'none' ? 'block' : 'none';
-}
-</script>     -->
+  <script src="faq.js"></script> -->
 </body>
 </html>
