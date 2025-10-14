@@ -12,7 +12,7 @@ const slideRoles = ['both', // welcome
   'both', // login
   'owner', 'owner', // register
   'owner', 'owner', // login
-  'owner', 'owner', 'owner', 'owner', // setup
+  // 'owner', 'owner', 'owner', 'owner', // setup
   'both', 'both', 'both', // main
   'owner', 'owner', // settings
   'owner', 'owner', // settings

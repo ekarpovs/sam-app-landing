@@ -127,7 +127,7 @@ footer {
 
 /* How To section*/
 .howto-content {
-  max-width: 420px;
+  max-width: 15.25rem;
   margin: 2rem auto;
   overflow: hidden;
   border-radius: 8px;
@@ -192,6 +192,7 @@ footer {
   padding: 1rem;
   box-sizing: border-box;
   min-height: 1px; /* prevents collapsing */
+  max-height: 51rem;
 }
 
 .slide img {
@@ -224,7 +225,7 @@ footer {
 
 /* FAQ section*/
 .faq-content {
-  max-width: 420px;
+  max-width: 26.25rem;
   margin: 2rem auto;
   overflow: hidden;
   border-radius: 8px;
