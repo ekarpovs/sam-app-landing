@@ -9,7 +9,7 @@ body {
 
 .container {
   padding: 1rem;
-  max-width: 650px;
+  max-width: 40.625rem;
   margin: auto;
 }
 
@@ -197,7 +197,7 @@ footer {
 
 .slide img {
   max-width: 100%;
-  max-height: 100vh;
+  max-height: 70%;
   height: auto;
   display: block;
   border-radius: 8px;
