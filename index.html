@@ -237,7 +237,7 @@
     // Uses https://countapi.xyz (public). Namespace/key are visible — change 'samapp-landing' if you want a different key.
     (async function () {
       try {
-        const res = await fetch('https://api.countapi.xyz/hit/samapp-info/visits');
+        const res = await fetch('https://api.countapi.xyz/hit/samapp-multi.info/visits');
         const data = await res.json();
         const el = document.getElementById('visits');
         if (el) el.textContent = data.value;
