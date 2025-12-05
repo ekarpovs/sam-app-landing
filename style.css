@@ -105,27 +105,31 @@ footer {
 }
 
 .terms-table,
-.subscription-table {
+.subscription-table,
+.features-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
 }
 
 .terms-table th, .terms-table td,
-.subscription-table th, .subscription-table td {
+.subscription-table th, .subscription-table td,
+.features-table th, .features-table td {
   border: 1px solid #ddd;
   padding: 0.6rem;
   text-align: left;
 }
 
 .terms-table th, 
-.subscription-table th {
+.subscription-table th,
+.features-table th {
   background-color: #f0f8ff;
   color: #333;
 }
 
 .terms-table td, 
-.subscription-table td {
+.subscription-table td,
+.features-table td {
   background-color: #fafafa;
 }
 
