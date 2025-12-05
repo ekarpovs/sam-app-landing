@@ -151,6 +151,7 @@
     <footer>
       SamApp MVP v1.0 • Release<br/>
       Built with ♥ by Sam & team
++     <small>Site visits: <span id="visits">–</span></small>
     </footer>
   </div>
 
@@ -230,6 +231,20 @@
         button.textContent = content.classList.contains('expanded') ? closeText : openText;
       });
     });
+  </script>
+  <script>
+    // Count API — global visit counter (no server)
+    // Uses https://countapi.xyz (public). Namespace/key are visible — change 'samapp-landing' if you want a different key.
+    (async function () {
+      try {
+        const res = await fetch('https://api.countapi.xyz/hit/samapp-info/visits');
+        const data = await res.json();
+        const el = document.getElementById('visits');
+        if (el) el.textContent = data.value;
+      } catch (err) {
+        console.warn('Visit counter error', err);
+      }
+    })();
   </script>
 </body>
 </html>
