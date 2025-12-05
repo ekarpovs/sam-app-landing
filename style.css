@@ -104,24 +104,28 @@ footer {
   display: none;
 }
 
-.terms-table {
+.terms-table,
+.subscription-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
 }
 
-.terms-table th, .terms-table td {
+.terms-table th, .terms-table td,
+.subscription-table th, .subscription-table td {
   border: 1px solid #ddd;
   padding: 0.6rem;
   text-align: left;
 }
 
-.terms-table th {
+.terms-table th, 
+.subscription-table th {
   background-color: #f0f8ff;
   color: #333;
 }
 
-.terms-table td {
+.terms-table td, 
+.subscription-table td {
   background-color: #fafafa;
 }
 

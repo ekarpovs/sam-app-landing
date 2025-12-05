@@ -20,7 +20,7 @@
     </div>
 
     <div class="toggle-section" id="intro-section">
-      <button class="toggle-button" id="intro-toggle" data-open="What is SamApp?" data-close="Hide Introduction">What is SamApp?</button>
+      <button class="toggle-button" id="intro-toggle" data-open="What is SamApp?" data-close="Hide Introduction">▽ What is SamApp?</button>
       <div class="toggle-content" id="intro-content">
         <p>SamApp is a lightweight, cross-device app for managing pet feeding routines.</p>
         <h3>Key Terms</h3>
@@ -33,11 +33,18 @@
           <tr><td><strong>Meal</strong></td><td>Type of food used for feeding</td></tr>
           <tr><td><strong>Portion</strong></td><td>Amount of food served</td></tr>
         </table>
+        <h3>Subscription Plans</h3>
+        <table class="subscription-table">
+          <tr><th>Subscription</th><th>Target</th></tr>
+          <tr><td><strong>Free</strong></td><td>For users with one pet</td></tr>
+          <tr><td><strong>Multi (Coming Soon)</strong></td><td>For users with multiple pets</td></tr>
+          <tr><td><strong>Pro (Coming Soon)</strong></td><td>For professional pet caregivers</td></tr>
+        </table>
       </div>
     </div>
 
     <div class="toggle-section" id="howto-section">
-      <button class="toggle-button" id="howto-toggle" data-open="How to Use It?" data-close="Hide Guide">How to Use It?</button>
+      <button class="toggle-button" id="howto-toggle" data-open="How to Use It?" data-close="Hide Guide">▽ How to Use It?</button>
       <div class="toggle-content" id="howto-content">
         <div class="carousel-controls">
           <button id="prev-slide" class="arrow-btn hidden">&#x2B05;</button>
@@ -97,7 +104,7 @@
     </div>
     
     <div class="toggle-section" id="faq-section">
-      <button class="toggle-button" id="faq-toggle" data-open="Common Questions" data-close="Hide FAQ">Common Questions</button>
+      <button class="toggle-button" id="faq-toggle" data-open="Common Questions" data-close="Hide FAQ">▽ Common Questions</button>
       <div class="toggle-content" id="faq-content">
         <div>
           <strong>Q: Why is the app named SamApp?</strong>
@@ -120,15 +127,30 @@
           <p>A: Yes, Open setting - Edit Meals. Change and tap the "Update" button.</p>
         </div>
         <div>
-          <strong>Q: Can I delete an the log entry I entered incorrectly?</strong>
-          <p>A: Yes, The last loggeg entry appears red. Just tap the entry.</p>
+          <strong>Q: Can I delete the log entry I entered incorrectly?</strong>
+          <p>A: Yes, The last logged entry appears red. Just tap the entry.</p>
+        </div>
+        <div>
+          <strong>Q: Can I send a feedback?</strong>
+          <p>A: Yes, you can send feedback through the app's feedback form.</p>
+        </div>
+        <div>
+          <strong>Q: What kind of feedback can I provide?</strong>
+          <p>A: You can provide feedback on any aspect of the app, including features, usability, and bugs.</p>
         </div>
       </div>
     </div>
 
+    <div class="toggle-section" id="feature-section">
+      <button class="toggle-button" id="feature-toggle" data-open="Features" data-close="Hide Features">▽ Features</button>
+      <div class="toggle-content" id="feature-content">
+        <!-- filled from the script -->
+      </div> 
+    </div>
+
     <footer>
       SamApp MVP v1.0 • Release<br/>
-      Built with ♥ by Evgeny & team
+      Built with ♥ by Sam & team
     </footer>
   </div>
 
@@ -137,18 +159,77 @@
     document.querySelectorAll('.toggle-button').forEach(button => {
       button.addEventListener('click', () => {
         const section = button.closest('.toggle-section');
+        const openText = '▽ ' +button.getAttribute('data-open');
+        const closeText = '▲ ' +button.getAttribute('data-close');
+
         const content = section.querySelector('.toggle-content');
-        const openText = button.getAttribute('data-open');
-        const closeText = button.getAttribute('data-close');
+        // fill features content if it's the feature section
+
+        if (section.id === 'feature-section' && !content.dataset.filled) {
+          const header = document.createElement('h3');
+          // header.textContent = 'Feature/Subscription  Free | Multi | Pro';
+          content.appendChild(header);
+
+          const features = [
+            { name: 'Members', free: '1', multi: '1', pro: 'more' },
+            { name: 'Edit members', free: '✔', multi: '✔', pro: '✔' },
+            { name: 'New members', free: '✔', multi: '✔', pro: '✔' },
+            { name: 'Profiles', free: '1', multi: '3', pro: 'unlimited' },
+            { name: 'Edit profiles', free: '✔', multi: '✔', pro: '✔' },
+            { name: 'New profiles', free: '-', multi: '✔', pro: '✔' },
+            { name: 'Predefined foods', free: '6', multi: '6', pro: '6' },
+            { name: 'Edit foods', free: '✔', multi: '✔', pro: '✔' },
+            { name: 'New foods', free: '-', multi: '✔', pro: '✔' },
+            { name: 'Foods sharing', free: '-', multi: '✔', pro: '✔' },
+            { name: 'Unused foods log', free: '-', multi: '✔', pro: '✔' },
+            { name: 'Portion slider tuning', free: '-', multi: '-', pro: '✔' },
+            { name: 'Feeding log history tuning', free: '-', multi: '-', pro: '✔' },
+            { name: 'Statistics', free: '-', multi: '-', pro: '✔' },
+          ];
+
+          const table = document.createElement('table');
+          table.className = 'features-table';
+          const thead = document.createElement('thead');
+          const headRow = document.createElement('tr');
+          ['Feature / Subscription', 'Free', 'Multi', 'Pro'].forEach(text => {
+            const th = document.createElement('th');
+            th.textContent = text;
+            headRow.appendChild(th);
+          });
+          thead.appendChild(headRow);
+          table.appendChild(thead);
+
+          const tbody = document.createElement('tbody');
+          features.forEach(f => {
+            const tr = document.createElement('tr');
+            const tdName = document.createElement('td');
+            tdName.textContent = f.name;
+            tr.appendChild(tdName);
+
+            const tdFree = document.createElement('td');
+            tdFree.textContent = f.free;
+            tr.appendChild(tdFree);
+
+            const tdMulti = document.createElement('td');
+            tdMulti.textContent = f.multi;
+            tr.appendChild(tdMulti);
+
+            const tdPro = document.createElement('td');
+            tdPro.textContent = f.pro;
+            tr.appendChild(tdPro);
+
+            tbody.appendChild(tr);
+          });
+          table.appendChild(tbody);
+          content.appendChild(table);
+
+          content.dataset.filled = true;
+        }
 
         content.classList.toggle('expanded');
         button.textContent = content.classList.contains('expanded') ? closeText : openText;
       });
     });
   </script>
-
-  <!-- <script src="intro.js"></script>
-  <script src="howto.js"></script>
-  <script src="faq.js"></script> -->
 </body>
 </html>
