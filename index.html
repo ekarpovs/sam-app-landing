@@ -27,7 +27,7 @@
         <table class="terms-table">
           <tr><th>Term</th><th>Meaning</th></tr>
           <tr><td><strong>Client</strong></td><td>Household managing pets</td></tr>
-          <tr><td><strong>Owner</strong></td><td>Registers and manages setup</td></tr>
+          <tr><td><strong>Owner</strong></td><td>Registers and manages setup. Feeds pets</td></tr>
           <tr><td><strong>Member</strong></td><td>Can feed pets</td></tr>
           <tr><td><strong>Pet</strong></td><td>Animal tracked in SamApp</td></tr>
           <tr><td><strong>Meal</strong></td><td>Type of food used for feeding</td></tr>
@@ -172,20 +172,22 @@
           content.appendChild(header);
 
           const features = [
-            { name: 'Members', free: '1', multi: '1', pro: 'more' },
+            { name: 'Members', free: '1 or more', multi: '1 or more', pro: '1 or more' },
             { name: 'Edit members', free: '✔', multi: '✔', pro: '✔' },
             { name: 'New members', free: '✔', multi: '✔', pro: '✔' },
-            { name: 'Profiles', free: '1', multi: '3', pro: 'unlimited' },
-            { name: 'Edit profiles', free: '✔', multi: '✔', pro: '✔' },
-            { name: 'New profiles', free: '-', multi: '✔', pro: '✔' },
+            { name: 'Pets', free: '1', multi: '1-3', pro: '1-20' },
+            { name: 'Edit pets', free: '✔', multi: '✔', pro: '✔' },
+            { name: 'New pets', free: '-', multi: '✔', pro: '✔' },
             { name: 'Predefined foods', free: '6', multi: '6', pro: '6' },
             { name: 'Edit foods', free: '✔', multi: '✔', pro: '✔' },
             { name: 'New foods', free: '-', multi: '✔', pro: '✔' },
             { name: 'Foods sharing', free: '-', multi: '✔', pro: '✔' },
             { name: 'Unused foods log', free: '-', multi: '✔', pro: '✔' },
             { name: 'Portion slider tuning', free: '-', multi: '-', pro: '✔' },
-            { name: 'Feeding log history tuning', free: '-', multi: '-', pro: '✔' },
+            { name: 'Feeding log history', free: '2 days', multi: '2 days', pro: '30 days' },
             { name: 'Statistics', free: '-', multi: '-', pro: '✔' },
+            { name: 'Auto sync', free: '-', multi: '-', pro: '✔' },
+            { name: 'Support', free: 'FAQ, email', multi: 'FAQ, email', pro: 'FAQ, email, chat' },
           ];
 
           const table = document.createElement('table');
