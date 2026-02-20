@@ -1,9 +1,11 @@
 const allSlides = Array.from(document.querySelectorAll('.slide'));
 const slidesContainer = document.getElementById('slides');
-const roleButtons = document.querySelectorAll('.role-btn');
+const roleButtons = document.querySelectorAll('.tab-btn');
 const prevBtn = document.getElementById('prev-slide');
 const nextBtn = document.getElementById('next-slide');
 const dots = document.getElementById('navigation-dots');
+const currentSlideSpan = document.getElementById('current-slide');
+const totalSlidesSpan = document.getElementById('total-slides');
 
 let currentIndex = 0;
 let visibleSlides = [];
@@ -27,24 +29,44 @@ function updateVisibleSlides(role) {
 
   slidesContainer.innerHTML = '';
   visibleSlides.forEach(slide => slidesContainer.appendChild(slide));
-  slidesContainer.style.width = `${visibleSlides.length * 100}%`;
+  // Don't set inline width - let CSS handle it with flex
+  slidesContainer.style.width = '';
 
   dots.innerHTML = '';
   visibleSlides.forEach((_, i) => {
     const dot = document.createElement('span');
     dot.className = i === 0 ? 'active' : '';
+    dot.addEventListener('click', () => {
+      currentIndex = i;
+      updateCarousel(currentIndex);
+    });
     dots.appendChild(dot);
   });
+
+  // Update total slides counter
+  if (totalSlidesSpan) {
+    totalSlidesSpan.textContent = visibleSlides.length;
+  }
 
   currentIndex = 0;
   updateCarousel(currentIndex);
 }
 
 function updateCarousel(index) {
+  // Use index * 100% for translateX since each slide is 100% of container width
   slidesContainer.style.transform = `translateX(-${index * 100}%)`;
-  prevBtn.classList.toggle('hidden', index === 0);
-  nextBtn.classList.toggle('hidden', index === visibleSlides.length - 1);
+  
+  // Update button states
+  prevBtn.disabled = index === 0;
+  nextBtn.disabled = index === visibleSlides.length - 1;
+  
+  // Update dots
   [...dots.children].forEach((dot, i) => dot.classList.toggle('active', i === index));
+  
+  // Update slide counter
+  if (currentSlideSpan) {
+    currentSlideSpan.textContent = index + 1;
+  }
 }
 
 prevBtn.addEventListener('click', () => {
@@ -59,9 +81,13 @@ nextBtn.addEventListener('click', () => {
 
 roleButtons.forEach(button => {
   button.addEventListener('click', () => {
-    // Activate clicked role
-    roleButtons.forEach(btn => btn.classList.remove('active'));
+    // Update active tab
+    roleButtons.forEach(btn => {
+      btn.classList.remove('active');
+      btn.setAttribute('aria-selected', 'false');
+    });
     button.classList.add('active');
+    button.setAttribute('aria-selected', 'true');
 
     const selectedRole = button.getAttribute('data-role');
     updateVisibleSlides(selectedRole);

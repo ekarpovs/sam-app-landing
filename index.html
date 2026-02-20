@@ -20,7 +20,7 @@
     </div>
 
     <section class="toggle-section" id="intro-section">
-      <button class="toggle-button" id="intro-toggle" data-open="What is SamApp?" data-close="Hide Introduction">▽ What is SamApp?</button>
+      <button class="toggle-button" id="intro-toggle" data-open="What is SamApp?" data-close="Hide Introduction">What is SamApp?</button>
       <div class="toggle-content" id="intro-content">
         <p>SamApp is a lightweight, cross-device app for managing pets feeding routines.</p>
         <h3>Key Terms</h3>
@@ -44,19 +44,34 @@
     </section>
 
     <section class="toggle-section" id="howto-section">
-      <button class="toggle-button" id="howto-toggle" data-open="How to Use It?" data-close="Hide Guide">▽ How to Use It?</button>
+      <button class="toggle-button" id="howto-toggle" data-open="How to Use It?" data-close="Hide Guide">How to Use It?</button>
       <div class="toggle-content" id="howto-content">
-        <div class="carousel-controls">
-          <button id="prev-slide" class="arrow-btn hidden">&#x2B05;</button>
-          <div class="role-toggle" id="role-toggle">
-            <button class="role-btn active" data-role="owner">&#x1F4BC;<span> Owner</span></button>
-            <button class="role-btn" data-role="member">&#x1F466;<span>Member</span></button>
+        <div class="carousel-wrapper">
+          <div class="carousel-controls">
+            <button id="prev-slide" class="carousel-btn carousel-btn--prev" aria-label="Previous slide">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            
+            <div class="role-tabs">
+              <button class="tab-btn active" data-role="owner" aria-selected="true">
+                <span>👔</span> Owner
+              </button>
+              <button class="tab-btn" data-role="member" aria-selected="false">
+                <span>👥</span> Member
+              </button>
+            </div>
+            
+            <button id="next-slide" class="carousel-btn carousel-btn--next" aria-label="Next slide">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
           </div>
-          <button id="next-slide" class="arrow-btn">&#x27A1;</button>
-        </div>
 
-        <div class="slides-container">
-          <div class="slides" id="slides">
+          <div class="slides-container">
+            <div class="slides" id="slides">
             <div class="slide"><img src="images/00-welcome-panel.jpg">
               <p>Welcome screen</p>
             </div>
@@ -99,12 +114,18 @@
           </div>
         </div>
 
-        <div class="navigation-dots" id="navigation-dots"></div>
+        <div class="carousel-indicators">
+          <div id="navigation-dots"></div>
+          <div class="slide-counter">
+            <span id="current-slide">1</span> / <span id="total-slides">15</span>
+          </div>
+        </div>
+        </div>
       </div>
     </section>
 
     <section class="toggle-section" id="faq-section">
-      <button class="toggle-button" id="faq-toggle" data-open="Common Questions" data-close="Hide FAQ">▽ Common Questions</button>
+      <button class="toggle-button" id="faq-toggle" data-open="Common Questions" data-close="Hide FAQ">Common Questions</button>
       <div class="toggle-content" id="faq-content">
         <div>
           <strong>Q: Why is the app named SamApp?</strong>
@@ -142,14 +163,14 @@
     </section>
 
     <section class="toggle-section" id="feature-section">
-      <button class="toggle-button" id="feature-toggle" data-open="Features" data-close="Hide Features">▽ Features</button>
+      <button class="toggle-button" id="feature-toggle" data-open="Features" data-close="Hide Features">Features</button>
       <div class="toggle-content" id="feature-content">
         <!-- filled from the script -->
       </div> 
     </section>
 
     <section class="toggle-section" id="news-section">
-      <button class="toggle-button" id="news-toggle" data-open="What's new?" data-close="Hide News">▽ News</button>
+      <button class="toggle-button" id="news-toggle" data-open="What's new?" data-close="Hide News">What's new?</button>
       <div class="toggle-content" id="news-content">
         <div>
           <strong>20/12/2025: New feedback panel for user suggestions and bug reports.</strong>
@@ -184,9 +205,6 @@
     document.querySelectorAll('.toggle-button').forEach(button => {
       button.addEventListener('click', () => {
         const section = button.closest('.toggle-section');
-        const openText = '▽ ' +button.getAttribute('data-open');
-        const closeText = '▲ ' +button.getAttribute('data-close');
-
         const content = section.querySelector('.toggle-content');
         // fill features content if it's the feature section
 
@@ -254,7 +272,6 @@
         }
 
         content.classList.toggle('expanded');
-        button.textContent = content.classList.contains('expanded') ? closeText : openText;
       });
     });
   </script>
